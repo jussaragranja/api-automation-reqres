@@ -1,5 +1,6 @@
-package br.com.ju;
+package br.com.ju.tests;
 
+import br.com.ju.config.BaseTest;
 import io.restassured.http.ContentType;
 import org.junit.jupiter.api.Test;
 

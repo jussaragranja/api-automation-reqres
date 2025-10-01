@@ -1,4 +1,4 @@
-package br.com.ju;
+package br.com.ju.config;
 
 import org.yaml.snakeyaml.Yaml;
 import java.io.InputStream;
