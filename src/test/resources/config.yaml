@@ -1,0 +1,5 @@
+baseUrl: "https://reqres.in"
+timeout: 5000
+defaultHeaders:
+  Content-Type: "application/json"
+  Accept: "application/json"
