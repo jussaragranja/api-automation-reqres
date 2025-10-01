@@ -16,3 +16,11 @@ Exemplo de automação de testes de API utilizando Java 25, RestAssured e JUnit 
 
 ```bash
 mvn test
+```
+
+## Author
+
+👤 **Jussara Granja**
+
+* Github: [@jussaragranja](https://github.com/jussaragranja)
+* LinkedIn: [@jussaragranja](https://linkedin.com/in/jussaragranja)
