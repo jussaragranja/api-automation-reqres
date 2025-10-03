@@ -5,7 +5,7 @@ import java.io.InputStream;
 import java.util.Map;
 
 public class Config {
-    private static Map<String, Object> config;
+    private static final Map<String, Object> config;
 
     static {
         try {

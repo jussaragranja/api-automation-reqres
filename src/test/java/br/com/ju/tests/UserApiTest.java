@@ -15,8 +15,8 @@ public class UserApiTest extends BaseTest {
                 .when()
                 .get("/api/users?page=2")
                 .then()
-                .statusCode(200)
                 .log().all()
+                .statusCode(200)
                 .body("data", not(empty()))
                 .body("data.first_name", hasItem("Michael"));
     }
@@ -36,6 +36,7 @@ public class UserApiTest extends BaseTest {
                 .when()
                 .post("/api/users")
                 .then()
+                .log().all()
                 .statusCode(201)
                 .body("id", notNullValue())
                 .body("name", equalTo("morpheus"))
@@ -49,6 +50,7 @@ public class UserApiTest extends BaseTest {
                 .when()
                 .get("/api/users/2")
                 .then()
+                .log().all()
                 .statusCode(200)
                 .body("data.id", equalTo(2))
                 .body("data.email", containsString("@reqres.in"));
@@ -61,6 +63,7 @@ public class UserApiTest extends BaseTest {
                 .header("x-api-key", "reqres-free-v1")
                 .get("/api/users/23")
                 .then()
+                .log().all()
                 .statusCode(404);
     }
 }
