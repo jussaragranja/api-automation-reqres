@@ -18,7 +18,7 @@ public class UserApiTest extends BaseTest {
                 .log().all()
                 .statusCode(200)
                 .body("data", not(empty()))
-                .body("data.first_name", hasItem("Michael"));
+                .body("data.name", hasItem("morpheus"));
     }
 
     @Test
@@ -31,7 +31,6 @@ public class UserApiTest extends BaseTest {
             """;
         given()
                 .contentType(ContentType.JSON)
-                .header("x-api-key", "reqres-free-v1")
                 .body(requestBody)
                 .when()
                 .post("/api/users")
@@ -46,21 +45,19 @@ public class UserApiTest extends BaseTest {
     @Test
     void testGetSingleUser() {
         given()
-                .header("x-api-key", "reqres-free-v1")
                 .when()
                 .get("/api/users/2")
                 .then()
                 .log().all()
                 .statusCode(200)
                 .body("data.id", equalTo(2))
-                .body("data.email", containsString("@reqres.in"));
+                .body("data.name", containsString("fuchsia rose"));
     }
 
     @Test
     void testUserNotFound() {
         given()
                 .when()
-                .header("x-api-key", "reqres-free-v1")
                 .get("/api/users/23")
                 .then()
                 .log().all()

@@ -13,6 +13,7 @@ public class BaseTest {
                                 .setParam("http.connection.timeout", Config.getTimeout())
                                 .setParam("http.socket.timeout", Config.getTimeout())
                 );
+        RestAssured.requestSpecification = RestAssured.given().header("x-api-key", "reqres-free-v1");
         RestAssured.requestSpecification = RestAssured.given().headers(Config.getDefaultHeaders());
     }
 }
