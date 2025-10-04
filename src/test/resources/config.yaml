@@ -1,5 +1,6 @@
 baseUrl: "https://reqres.in"
 timeout: 5000
+apiKey: "reqres-free-v1"
 defaultHeaders:
   Content-Type: "application/json"
   Accept: "application/json"
