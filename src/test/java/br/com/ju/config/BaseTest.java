@@ -1,19 +1,11 @@
 package br.com.ju.config;
 
-import io.restassured.RestAssured;
+import br.com.ju.core.RestAssuredConfigUtil;
 import org.junit.jupiter.api.BeforeAll;
 
-public class BaseTest {
+public abstract class BaseTest {
     @BeforeAll
     static void setup() {
-        RestAssured.baseURI = Config.getBaseUrl();
-        RestAssured.config = RestAssured.config()
-                .httpClient(
-                        RestAssured.config().getHttpClientConfig()
-                                .setParam("http.connection.timeout", Config.getTimeout())
-                                .setParam("http.socket.timeout", Config.getTimeout())
-                );
-        RestAssured.requestSpecification = RestAssured.given().header("x-api-key", "reqres-free-v1");
-        RestAssured.requestSpecification = RestAssured.given().headers(Config.getDefaultHeaders());
+        RestAssuredConfigUtil.configure();
     }
 }

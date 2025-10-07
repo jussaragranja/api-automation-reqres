@@ -4,18 +4,13 @@ import org.yaml.snakeyaml.Yaml;
 import java.io.InputStream;
 import java.util.Map;
 
-public class Config {
+public final class Config {
     private static final Map<String, Object> config;
 
     static {
-        try {
-            InputStream in = Config.class.getClassLoader().getResourceAsStream("config.yaml");
-            if (in == null) {
-                throw new RuntimeException("Arquivo config.yaml não encontrado no classpath!");
-            }
-            Yaml yaml = new Yaml();
-            config = yaml.load(in);
-            in.close();
+        try (InputStream in = Config.class.getClassLoader().getResourceAsStream("config.yaml")) {
+            if (in == null) throw new RuntimeException("Arquivo config.yaml não encontrado!");
+            config = new Yaml().load(in);
         } catch (Exception e) {
             throw new RuntimeException("Erro ao carregar config.yaml", e);
         }
@@ -32,5 +27,9 @@ public class Config {
     @SuppressWarnings("unchecked")
     public static Map<String, String> getDefaultHeaders() {
         return (Map<String, String>) config.get("defaultHeaders");
+    }
+
+    public static String getApiKey() {
+        return (String) config.get("apiKey");
     }
 }
